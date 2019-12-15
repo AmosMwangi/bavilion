@@ -14,3 +14,22 @@ class Editor(models.Model):
     class Meta:
         ordering = ["first_name"]
 
+
+class Category(models.Model):
+    choise = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.choise
+
+    class Meta:
+        ordering = ["choise"]
+
+
+class Location(models.Model):
+    area = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.area
+
+    class Meta:
+        ordering = ["area"]
