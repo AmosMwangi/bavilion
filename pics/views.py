@@ -33,3 +33,14 @@ def past_days_pics(request, past_date):
     bird = Pics.days_pics(date)
     return render(request, 'all-pics/past-pics.html', {"date":date,"bird":bird, "title":"Past News"})
 
+# search results 
+def search_results(request):
+    if 'pics' in request.GET and request.GET["pics"]:
+        search_term = request.GET.get("pics")
+        searched_pics = Pics.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'folder/search.html',{"message":message,"pics":searched_pics,"search_term":search_term, "category": "search" })
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'folder/search.html',{"message":message, "category": "search"})
