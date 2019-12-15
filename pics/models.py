@@ -33,3 +33,10 @@ class Location(models.Model):
 
     class Meta:
         ordering = ["area"]
+
+
+class tags(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
