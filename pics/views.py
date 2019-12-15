@@ -8,4 +8,13 @@ def home(request):
  
     pics = Pics.todays_pics()
     return render(request, 'folder/home.html', {"pics":pics})
-    
+
+# display pic details 
+def detail(request,pkid):
+    try:
+        image=Pics.objects.get(id=pkid)
+    except DoesNotExist:
+        raise Http404()
+
+    return render(request, 'folder/details.html', {"image":image})
+
