@@ -58,15 +58,15 @@ class Pics(models.Model):
     @classmethod
     def todays_pics(cls):
         today = dt.date.today()
-        bird = cls.objects.filter(pub_date__date=today)
-        return bird
+        pics = cls.objects.filter(pub_date__date=today)
+        return pics
 
     @classmethod
     def days_pics(cls, date):
-        bird = cls.objects.filter(pub_date__date=date)
-        return bird
+        pics = cls.objects.filter(pub_date__date=date)
+        return pics
 
     @classmethod
     def search_by_category(cls, search_term):
-        bird = cls.objects.filter(category__icontains=search_term)
-        return bird
+        pics = cls.objects.filter(category__icontains=search_term)
+        return pics
