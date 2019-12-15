@@ -44,3 +44,11 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'folder/search.html',{"message":message, "category": "search"})
+
+# single pics
+def pics(request, pics_id):
+    try:
+        pics = Pics.objects.get(id = pics_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request, "folder/pics.html", {"pics":pics})
