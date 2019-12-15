@@ -31,7 +31,7 @@ def past_days_pics(request, past_date):
         return redirect(picsToday)
 
     bird = Pics.days_pics(date)
-    return render(request, 'all-pics/past-pics.html', {"date":date,"bird":bird, "title":"Past News"})
+    return render(request, 'folder/past-pics.html', {"date":date,"bird":bird, "title":"Past News"})
 
 # search results 
 def search_results(request):
