@@ -1,0 +1,20 @@
+{% extends 'all-pics/base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <img src="{{pics.pics_image.url}}" class="img-responsive" alt="">
+        </div>
+
+        <div class="row">
+            <h1 class="text-center">{{ pics.title }}</h1>
+        </div>
+
+        <div class="row">
+            <p>Posted {{ pics.pub_date|timesince }} by {{ pics.editor.first_name }}</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
