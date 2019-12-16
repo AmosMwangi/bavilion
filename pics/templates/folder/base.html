@@ -1,0 +1,45 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% if title %}
+    <title>Fly Pics - {{title}}</title>
+    {% else %}
+    <title> Fly Pics </title>
+    {% endif %}
+
+    <!-- styles block -->
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% endblock %}
+
+<body>
+
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+
+</head>
