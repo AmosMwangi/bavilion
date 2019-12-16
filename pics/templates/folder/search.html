@@ -14,14 +14,24 @@
             {% if pics %}
             {% for pic in pics %}
             <div class="col-sm-6 col-md-6">
-                <h1>{{ pic.title }}</h1>
-                <p>{{pic.post}}</p>
-                <img src="{{ pic.cover.url }}" class="img-responsive" alt="Image">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ pic.cover.url }}" class="img-responsive card-img-top" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pic.title }}</h5>
+                        <p class="card-text">{{pic.post}}</p>  
+                    </div>
+                </div>
+                <br>
+                <br>
             </div>
+
+
             <div class="col-sm-6 col-md-6">
             </div>
             {% endfor %}
             {% endif %}
+
         </div>
     </div>
 </section>
