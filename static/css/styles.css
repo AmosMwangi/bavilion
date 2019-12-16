@@ -1,0 +1,16 @@
+
+h1{
+    color: red;
+}
+#exampleModalCnterTitle{
+    width: 1000px !important;
+    margin: auto !important;
+}
+
+body{
+    background-color: rgb(245, 245, 209) !important;
+}
+
+section{
+    padding-top: 50px !important;
+}
