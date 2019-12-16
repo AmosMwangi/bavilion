@@ -1,0 +1,10 @@
+{% extends 'folder/base.html' %}
+
+{% block content %}
+{{ block.super }}
+
+<section>
+    <p>{{ image.editor }}</p>
+    <img src="{{ image.cover.url }}" alt="">
+</section>
+{% endblock %}
