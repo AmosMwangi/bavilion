@@ -1,13 +1,30 @@
 from django.shortcuts import render,redirect
 import datetime as dt
-from django.http import HttpResponse,Http404
-from .models import Pics
+from django.http import HttpResponse,Http404,HttpResponseRedirect
+from .models import Pics, NewsLetterRecipients  
+from .forms import NewsLetterForm
+from .email import send_welcome_email
 
 # display home 
 def home(request):
  
     pics = Pics.todays_pics()
-    return render(request, 'folder/home.html', {"pics":pics})
+
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+
+            send_welcome_email(name,email)
+
+            HttpResponseRedirect('home')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'folder/home.html', {"pics":pics,"letterForm":form})
 
 # display pic details 
 def detail(request,pkid):

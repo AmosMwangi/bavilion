@@ -1,63 +1,127 @@
 {% extends 'folder/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 {{ block.super }}
 <section>
     <div class="container">
+        <section>
+            <h2 class="text-center">
+                All pics in one place
+            </h2>
+        </section>
 
-        {% for pics_item in pics %}
-        <div class="card" style="width: 19rem;">
-            <!-- image as link -->
-            <a type="button" data-toggle="modal" data-target="#exampleModalLong" style="border-radius: 50% !important;">
-                <img src="{{ pics_item.cover.url }}" class="card-img-top img-responsive" alt="Image">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">{{ pics_item.title }}</h5>
-                <small class="card-text text-muted">By {{ pics_item.editor }} on
-                    {{ pics_item.pub_date|date:"F d, Y" }}</small>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">{{ pics_item.editor }}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-body">
-                                    <!-- modal-contet-body -->
-                                    <div class="card" style="width: 27rem;">
-                                        <img src="{{ pics_item.cover.url }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">{{ pics_item.post }}</p>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <p class="modal-title" id="exampleModalLongTitle">Category:
-                                        {{pics_item.category}}</p>
-                                    <p class="modal-title" id="exampleModalLongTitle">Location:
-                                        {{pics_item.location}}</p>
-                                </div>
-                            </div>
+        <section>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search by category " name="pics">
+                            <div class="input-group-btn">
+                                <button class="btn btn-success" type="submit">search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+
+            </div>
+        </section>
+
+
+        <section id="pics">
+            <div class="row">
+                {% for pics_item in pics %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 19rem;">
+                        <!-- image as link -->
+
+                        <img src="{{ pics_item.cover.url }}" class="card-img-top img-responsive" alt="Image"
+                            data-toggle="modal" data-target="#extraModal{{pics_item.id}}"
+                            style="cursor: pointer !important;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pics_item.title }}</h5>
+                            <small class="card-text text-muted">By {{ pics_item.editor }} on
+                                {{ pics_item.pub_date|date:"F d, Y" }}</small>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
+
+        {% for pics_item in pics %}
+        <!-- Modal -->
+        <div class="modal fade" id="extraModal{{pics_item.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ pics_item.editor }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <!-- modal-contet-body -->
+                            <div class="card" style="width: 27rem;">
+                                <img src="{{ pics_item.cover.url }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">{{ pics_item.post }}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <p class="modal-title" id="exampleModalLongTitle">Category:
+                                {{pics_item.category}}</p>
+                            <p class="modal-title" id="exampleModalLongTitle">Location:
+                                {{pics_item.location}}</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <br>
-        <!-- <a href="/detail/{{ bird_item.id}}" class="btn btn-outline-primary mr-auto">View</a> -->
-        {% empty %}
 
-        <div class="row">
-            <h2 class="text-center">No pics to display</h2>
-        </div>
+
+        <!-- <a href="/detail/{{ bird_item.id}}" class="btn btn-outline-primary mr-auto">View</a> -->
+
         {% endfor %}
 
     </div>
 
 </section>
+{% endblock %}
+
+<!-- footer -->
+{% block footer %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est rem nisi excepturi reprehenderit a! Ut
+                    consectetur modi repellendus nisi aliquam necessitatibus exercitationem? Quam accusamus reiciendis
+                    soluta corporis quae illum quibusdam?</p>
+            </div>
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est rem nisi excepturi reprehenderit a! Ut
+                    consectetur modi repellendus nisi aliquam necessitatibus exercitationem? Quam accusamus reiciendis
+                    soluta corporis quae illum quibusdam?</p>
+            </div>
+            <div class="col-md-4">
+                <form action="{%url 'home'%}" method="post">
+                    {%csrf_token%}
+
+                    {% bootstrap_form letterForm layout='inline' %}
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}

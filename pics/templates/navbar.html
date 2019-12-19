@@ -11,21 +11,96 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
-    <!-- styles block -->
-    {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    {% endblock %}
+
 
 
     <title>Hello, world!</title>
 </head>
 
-<body>
+<style>
+    #main {
+        height: 75vh !important;
+        background-color: black;
 
+    }
+
+    /*
+  ========================
+  scroll down indicator
+  ========================
+  */
+    .box {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 230px;
+    }
+
+    .box span {
+        display: block !important;
+        width: 20px !important;
+        height: 20px !important;
+        border-bottom: 1px solid #fff !important;
+        border-right: 1px solid #fff !important;
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: animate 2s infinite;
+    }
+
+    .box span:nth-child(2) {
+        animation-delay: -0.2s;
+    }
+
+    .box span:nth-child(3) {
+        animation-delay: -0.4s;
+    }
+
+    @keyframes animate {
+        0% {
+            opacity: 0;
+            transform: rotate(45deg) translate(-20px, -20px);
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+    }
+
+
+    #logo {
+        height: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+        margin-top: 60px;
+        cursor: pointer;
+    }
+
+    #box {
+        height: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+        margin-top: 12em;
+        cursor: pointer;
+    }
+</style>
+
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">King Studio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,22 +120,31 @@
                     </li>
                 </ul>
 
-                <!-- search form -->
-                <div class="col-sm-4 col-md-4 navbar-right">
 
-                    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="pics">
-                            <div class="input-group-btn">
-                                <button class="btn btn-success" type="submit">search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </nav>
+
+    <!-- banner -->
+
+    <main id="main">
+        <div class="container" style="padding-top: 2em">
+
+            <a href="/">
+                <img src="https://www.codester.com/static/uploads/items/4343/preview/003.jpg"
+                    style="border-radius: 50%; height: 300px; width: 300px;" class="img-fluid" id="logo" alt="">
+            </a>
+
+            <div class="box" id="box">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </main>
+
 </body>
 
 </html>

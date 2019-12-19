@@ -11,6 +11,9 @@ class Editor(models.Model):
     def __str__(self):
         return self.first_name
 
+    def save_editor(self):
+        self.save()
+
     class Meta:
         ordering = ["first_name"]
 
@@ -55,10 +58,13 @@ class Pics(models.Model):
     def __str__(self):
         return self.title
 
+    def save_pics(self):
+        self.save()
+
     @classmethod
     def todays_pics(cls):
         today = dt.date.today()
-        pics = cls.objects.filter(pub_date__date=today)
+        pics = cls.objects.all()
         return pics
 
     @classmethod
@@ -68,5 +74,9 @@ class Pics(models.Model):
 
     @classmethod
     def search_by_category(cls, search_term):
-        pics = cls.objects.filter(category__icontains=search_term)
+        pics = cls.objects.filter(category__choise__icontains=search_term)
         return pics
+
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
