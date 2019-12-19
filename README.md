@@ -1,4 +1,5 @@
-# [Bavilion](https://github.com/AmosMwangi/bavilion)
+# [Kings Studio](https://github.com/AmosMwangi/bavilion)
+<img src="https://www.codester.com/static/uploads/items/4343/preview/003.jpg" alt="">
 
 This project was generated with [Python](https://www.python.org/) version 3.6.9 <br>
 
