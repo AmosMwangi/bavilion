@@ -1,5 +1,5 @@
 # [Kings Studio](https://github.com/AmosMwangi/bavilion)
-<img src="https://www.codester.com/static/uploads/items/4343/preview/003.jpg" alt="">
+<img src="https://www.codester.com/static/uploads/items/4343/preview/003.jpg" width="200px" height="200px" alt="">
 
 This project was generated with [Python](https://www.python.org/) version 3.6.9 <br>
 
@@ -12,21 +12,17 @@ It's an webapp that has features of uploading new pics and show location where t
 ## User Stories
 Features of the application
 
-* As a user I would like to:
-* View different photos that interest me.
-* Click on a single photo to expand it and also view the details of the photo.
-* The photo details must appear on a modal within the same route as the main page.
-* Search for different categories of photos. (ie. Travel, Food)
-* Copy a link to the photo to share with my friends.
-* View photos based on the location they were taken.
+* A user can view diffrent pics
+* A user can click on the pic to view it's detail, category and also location where  the pic was taken on a modal.
+* A user can search for a pics by category
+* A user can subscribe to get to more pics when posted
 
 
 ## SetUp / Installation Requirements
 ### Prerequisites
-* python3.6
+* python3
 * pip
 * virtualenv
-* Requirements.txt
 
 ### Cloning
 * In your terminal:
@@ -47,7 +43,7 @@ Features of the application
 
 * To run the application, in your terminal:
 
-        $ chmod +x start.sh
+        $ chmod a+x start.sh
         $ ./start.sh
 
 ## Testing the Application
