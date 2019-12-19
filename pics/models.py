@@ -10,6 +10,9 @@ class Editor(models.Model):
 
     def __str__(self):
         return self.first_name
+    
+    def save_editor(self):
+        self.save()
 
     def save_editor(self):
         self.save()
@@ -57,6 +60,10 @@ class Pics(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save_pics(self):
+        self.save()
+
 
     def save_pics(self):
         self.save()
